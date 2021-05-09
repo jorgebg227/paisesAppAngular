@@ -1,0 +1,78 @@
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="animate__animated animate__bounceInUp">
+        <div class="row">
+            <div class="col-12">
+                <h1>País: <small>{{pais.translations.es}}</small></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h3>Bandera</h3>
+                <img [src]="pais.flag" alt="pais.name" class="img-thumbnail" />
+            </div>
+            <div class="col">
+                <h3>Información</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Nombre Nativo:</strong> {{ pais.nativeName}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Nombres alternartivos:</strong>
+                        <div class="row">
+                            <div class="col">
+                                <span class="badge bg-info me-2" *ngFor="let alter of pais.altSpellings">{{alter}}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Capital:</strong> {{ pais.capital}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Región:</strong> {{ pais.region}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Subregión:</strong> {{ pais.subregion}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Monedas:</strong>
+                        <span class="badge rounded-pill bg-success ms-2 monedas" *ngFor="let moneda of pais.currencies">{{moneda.name}} {{moneda.symbol}}</span>                    
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Código numérico:</strong> {{ pais.numericCode}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Código Alpha3:</strong> {{ pais.alpha3Code}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Población:</strong> {{ pais.population | number}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <h3>Tracucciones</h3>
+            <div class="col">
+                <span class="badge bg-primary me-2">{{pais.translations.es}}</span>
+                <span class="badge bg-primary me-2">{{pais.nativeName}}</span>
+                <span class="badge bg-primary me-2">{{pais.name}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.fr}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.it}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.de}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.ja}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.pt}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.br}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.nl}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.hr}}</span>
+                <span class="badge bg-primary me-2">{{pais.translations.fa}}</span>
+            </div>
+        </div>
+    
+        <!-- <pre class="mt-5">
+            {{pais | json}}
+        </pre> -->
+    </div>
+</ng-template>
